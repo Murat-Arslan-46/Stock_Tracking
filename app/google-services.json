@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "449431936192",
+    "firebase_url": "https://stock-tracking-1a078-default-rtdb.europe-west1.firebasedatabase.app/",
+    "project_id": "stock-tracking-1a078",
+    "storage_bucket": "stock-tracking-1a078.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449431936192:android:b76f84589261f63da0a125",
+        "android_client_info": {
+          "package_name": "com.marslan.stocktracking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "449431936192-h8vm19s3lu9u654f74fv1m37kli3b6j0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDU5SVk-hN5dV2KvLnl26lkmrPCfdiNHk4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "449431936192-h8vm19s3lu9u654f74fv1m37kli3b6j0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

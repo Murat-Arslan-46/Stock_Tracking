@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:product="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="list"
+            type="java.util.ArrayList&lt;com.marslan.stocktracking.database.table.Product&gt;" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.marslan.stocktracking.ui.product.component.ProductRecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            product:loadData="@{list}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
