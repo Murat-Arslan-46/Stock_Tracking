@@ -44,6 +44,6 @@
         android:backgroundTint="@color/color_primary"
         app:itemIconTint="@color/color_secondary_dark"
         app:itemTextColor="@color/color_secondary_dark"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/main_nav" />
 </androidx.drawerlayout.widget.DrawerLayout>

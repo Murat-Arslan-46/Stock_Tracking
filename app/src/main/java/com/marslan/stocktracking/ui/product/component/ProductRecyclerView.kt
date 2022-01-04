@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.marslan.stocktracking.core.extension.editProductScreen
 import com.marslan.stocktracking.core.extension.toast
 import com.marslan.stocktracking.database.table.Product
 import com.marslan.stocktracking.databinding.ItemViewProductBinding
@@ -18,6 +19,10 @@ class ProductRecyclerView : RecyclerView {
     constructor(context: Context, attrs: AttributeSet?, style: Int) : super(context, attrs, style) {
         layoutManager = LinearLayoutManager(context)
         adapter = ProductAdapter()
+    }
+
+    interface ItemEventListener{
+        fun clickConf(product: Product)
     }
 
     companion object {
@@ -32,6 +37,7 @@ class ProductRecyclerView : RecyclerView {
 
     }
 
+    var listener: ItemEventListener? = null
     private var currentList = arrayListOf<Product>()
 
     @SuppressLint("NotifyDataSetChanged")
@@ -73,8 +79,7 @@ class ProductRecyclerView : RecyclerView {
                 product = currentList[position]
                 executePendingBindings()
                 itemViewProductConf.setOnClickListener {
-                    context.toast("coming soon...")
-                    // todo ürün içerik değişikliği
+                    listener?.clickConf(currentList[position])
                 }
             }
         }

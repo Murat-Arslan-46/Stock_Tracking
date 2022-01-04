@@ -7,13 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.marslan.stocktracking.R
 import com.marslan.stocktracking.base.BaseFragment
+import com.marslan.stocktracking.core.extension.editProductScreen
+import com.marslan.stocktracking.core.extension.toast
 import com.marslan.stocktracking.database.table.Product
 import com.marslan.stocktracking.databinding.FragmentProductBinding
+import com.marslan.stocktracking.ui.product.component.ProductRecyclerView
 import com.marslan.stocktracking.ui.product.viewmodel.ProductViewModel
 import java.util.ArrayList
 import javax.inject.Inject
 
-class ProductFragment : BaseFragment() {
+class ProductFragment : BaseFragment(), ProductRecyclerView.ItemEventListener {
 
     private lateinit var binding: FragmentProductBinding
 
@@ -24,8 +27,9 @@ class ProductFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentProductBinding.inflate(layoutInflater)
         viewModel.getProducts().observe(viewLifecycleOwner,this::observer)
+        binding = FragmentProductBinding.inflate(layoutInflater)
+        binding.productRV.listener = this
         return binding.root
     }
 
@@ -38,5 +42,11 @@ class ProductFragment : BaseFragment() {
 
         @JvmStatic
         fun newInstance() = ProductFragment()
+    }
+
+    override fun clickConf(product: Product) {
+        requireActivity().editProductScreen(product) {
+            viewModel.setProduct(it.id.toString(),it)
+        }
     }
 }

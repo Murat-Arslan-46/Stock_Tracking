@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="@drawable/ic_edit"
+        android:elevation="1dp"
+        android:tint="@color/color_secondary_dark"
+        android:layout_margin="35dp"
+        app:layout_constraintStart_toStartOf="@id/editProductRoot"
+        app:layout_constraintEnd_toEndOf="@id/editProductRoot"
+        app:layout_constraintBottom_toTopOf="@id/editProductRoot"/>
+
+    <LinearLayout
+        android:id="@+id/editProductRoot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="170dp"
+        android:background="@drawable/background_radius_10dp"
+        android:backgroundTint="@color/color_primary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:layout_marginHorizontal="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editProductName"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/white"
+            android:paddingHorizontal="15dp"
+            android:hint="@string/name"
+            android:textColorHint="@color/grey_text"
+            android:textColor="@color/black"
+            android:background="@drawable/background_radius_10dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/price"
+            android:layout_marginHorizontal="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editProductPrice"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/background_radius_10dp"
+            android:backgroundTint="@color/white"
+            android:hint="@string/default_price_value"
+            android:inputType="numberSigned"
+            android:paddingHorizontal="15dp"
+            android:textColorHint="@color/grey_text" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/count"
+            android:layout_marginHorizontal="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editProductCount"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/background_radius_10dp"
+            android:backgroundTint="@color/white"
+            android:hint="@string/default_count_value"
+            android:inputType="numberSigned"
+            android:paddingHorizontal="15dp"
+            android:textColorHint="@color/grey_text" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/editProductCancel"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:background="@drawable/background_radius_10dp"
+        android:backgroundTint="@color/red"
+        android:tint="@color/white"
+        android:src="@drawable/ic_cancel"
+        app:layout_constraintStart_toStartOf="@id/editProductRoot"
+        app:layout_constraintTop_toBottomOf="@id/editProductRoot"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/editProductSuccess"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:padding="6dp"
+        android:background="@drawable/background_radius_10dp"
+        android:backgroundTint="@color/green"
+        android:tint="@color/white"
+        android:src="@drawable/ic_success"
+        app:layout_constraintEnd_toEndOf="@id/editProductRoot"
+        app:layout_constraintTop_toBottomOf="@id/editProductRoot"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

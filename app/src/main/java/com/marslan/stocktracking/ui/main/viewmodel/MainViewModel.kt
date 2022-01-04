@@ -1,6 +1,5 @@
 package com.marslan.stocktracking.ui.main.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -9,7 +8,6 @@ import com.marslan.stocktracking.base.BaseViewModel
 import com.marslan.stocktracking.database.table.Product
 import com.marslan.stocktracking.ui.main.data.MainRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,12 +16,9 @@ class MainViewModel @Inject constructor() : BaseViewModel() {
     @Inject
     lateinit var repository: MainRepository
 
-    val keys = MutableLiveData<Product?>(null)
-
     fun post(value: Product) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addProduct(value.id.toString(), value)
-            repository.createProduct(value)
         }
     }
 

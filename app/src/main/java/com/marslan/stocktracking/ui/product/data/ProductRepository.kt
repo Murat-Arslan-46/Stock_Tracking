@@ -1,22 +1,19 @@
 package com.marslan.stocktracking.ui.product.data
 
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
 import com.marslan.stocktracking.database.dao.ProductDao
 import com.marslan.stocktracking.database.table.Product
+import com.marslan.stocktracking.services.Request
 import javax.inject.Inject
 
 class ProductRepository @Inject constructor() {
 
     @Inject
-    lateinit var reference: DatabaseReference
-
-    @Inject
     lateinit var productDao: ProductDao
 
-    fun post(value: String) = reference.setValue(value)
+    @Inject
+    lateinit var request: Request
 
-    suspend fun createProduct(product: Product) = productDao.createProduct(product)
+    fun setProduct(id: String, value: Product) = request.addProduct(id, value)
 
-    fun listener(listener: ValueEventListener) = reference.addValueEventListener(listener)
+    fun getProducts() = productDao.getAllProduct()
 }

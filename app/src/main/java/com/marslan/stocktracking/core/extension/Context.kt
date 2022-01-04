@@ -5,14 +5,12 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.ViewGroup
-import android.widget.PopupWindow
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import com.marslan.stocktracking.R
 import com.marslan.stocktracking.database.table.Product
-import com.marslan.stocktracking.databinding.AddProductLayoutBinding
+import com.marslan.stocktracking.databinding.DialogAddProductBinding
+import com.marslan.stocktracking.databinding.DialogEditProductBinding
 import java.lang.Exception
 
 fun Context.toast(message: CharSequence) {
@@ -20,7 +18,7 @@ fun Context.toast(message: CharSequence) {
 }
 
 fun Context.addProductScreen(listener: (Product) -> Unit) {
-    val view = AddProductLayoutBinding.inflate(LayoutInflater.from(this), null, false)
+    val view = DialogAddProductBinding.inflate(LayoutInflater.from(this), null, false)
 
     val dialog = AlertDialog.Builder(this)
         .setView(view.root)
@@ -65,6 +63,59 @@ fun Context.addProductScreen(listener: (Product) -> Unit) {
                 .replace("-", "")
             view.addProductPrice.setText(result)
             view.addProductPrice.setSelection(result.length)
+        }
+    }
+    dialog.window?.setBackgroundDrawableResource(R.drawable.background_radius_10dp_transparent)
+    dialog.window?.attributes?.gravity = Gravity.TOP
+    dialog.show()
+}
+
+fun Context.editProductScreen(product: Product, listener: (Product) -> Unit) {
+    val view = DialogEditProductBinding.inflate(LayoutInflater.from(this), null, false)
+
+    val dialog = AlertDialog.Builder(this)
+        .setView(view.root)
+        .setCancelable(false)
+        .create()
+
+    view.editProductName.setText(product.name)
+    view.editProductPrice.setText(product.price.toString())
+    view.editProductCount.setText(product.count.toString())
+    view.editProductSuccess.setOnClickListener {
+        product.price =
+            try { view.editProductPrice.text.toString().toDouble() }
+            catch (e: Exception) { product.price }
+        product.count =
+            try { view.editProductCount.text.toString().toInt() }
+            catch (e: Exception) { product.count }
+        product.name =
+            if (view.editProductName.text.isNullOrBlank())
+                product.name
+            else
+                view.editProductName.text.toString()
+        listener(product)
+        dialog.dismiss()
+    }
+    view.editProductCancel.setOnClickListener { dialog.dismiss() }
+    view.editProductPrice.addTextChangedListener {
+        if (!it.isNullOrBlank() && it.any { c -> c == ',' || c == ' ' || c == '-' }) {
+            val result = it.toString()
+                .replace(",", "")
+                .replace(" ", "")
+                .replace("-", "")
+            view.editProductPrice.setText(result)
+            view.editProductPrice.setSelection(result.length)
+        }
+    }
+    view.editProductCount.addTextChangedListener {
+        if (!it.isNullOrBlank() && it.any { c -> c == '.' || c == ',' || c == ' ' || c == '-' }) {
+            val result = it.toString()
+                .replace(",", "")
+                .replace(" ", "")
+                .replace("-", "")
+                .replace(".", "")
+            view.editProductCount.setText(result)
+            view.editProductCount.setSelection(result.length)
         }
     }
     dialog.window?.setBackgroundDrawableResource(R.drawable.background_radius_10dp_transparent)

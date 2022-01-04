@@ -40,9 +40,6 @@ class MainActivity : BaseActivity(), MainToolbar.MainToolbarListener {
         binding.navView.setNavigationItemSelectedListener(this::navigationListener)
 
         viewModel.observeProduct()
-        viewModel.keys.observe(this,{
-            it?.apply { toast(name) }
-        })
     }
 
     private fun navigationListener(item: MenuItem) : Boolean{
@@ -57,13 +54,39 @@ class MainActivity : BaseActivity(), MainToolbar.MainToolbarListener {
         else
             binding.drawerLayout.close()
     }
-
     override fun addButton() {
-        addProductScreen {
-            viewModel.post(it)
+        when(mFragment){
+            is HomeFragment -> {
+                toast("coming soon")
+            }
+            is ProductFragment -> {
+                addProductScreen { viewModel.post(it) }
+            }
+            is CustomerFragment -> {
+                toast("coming soon")
+            }
+            is InvoiceFragment -> {
+                toast("coming soon")
+            }
         }
     }
-    override fun searchChange(search: String?) {}
+    override fun searchChange(search: String?) {
+        when(mFragment){
+            is HomeFragment -> {
+                toast("coming soon")
+            }
+            is ProductFragment -> {
+                toast("coming soon")
+            }
+            is CustomerFragment -> {
+                toast("coming soon")
+            }
+            is InvoiceFragment -> {
+                toast("coming soon")
+            }
+        }
+
+    }
 
     private fun openFragment(fragmentTitle: CharSequence){
         binding.toolbar.setTitle(

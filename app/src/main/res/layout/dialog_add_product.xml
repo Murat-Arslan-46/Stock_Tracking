@@ -9,7 +9,7 @@
         android:layout_height="65dp"
         android:src="@drawable/ic_product"
         android:elevation="1dp"
-        android:tint="@color/white"
+        android:tint="@color/color_secondary_dark"
         android:layout_margin="35dp"
         app:layout_constraintStart_toStartOf="@id/addProductRoot"
         app:layout_constraintEnd_toEndOf="@id/addProductRoot"
