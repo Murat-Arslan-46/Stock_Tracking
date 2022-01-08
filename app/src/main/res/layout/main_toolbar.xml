@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:gravity="center_vertical"
     android:layout_height="wrap_content"
-    android:background="@color/color_secondary">
+    android:background="@color/color_secondary"
+    android:gravity="center_vertical">
 
     <View
         android:id="@+id/statusBarHeight"
         android:layout_width="match_parent"
         android:layout_height="24dp"
         android:visibility="visible"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/titleToolbar"
@@ -22,8 +22,8 @@
         android:text="@string/app_name"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/statusBarHeight"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statusBarHeight"
         tools:layout_editor_absoluteX="8dp" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -32,52 +32,54 @@
         android:layout_height="50dp"
         android:elevation="2dp"
         android:padding="13dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/titleToolbar"
-        app:layout_constraintBottom_toBottomOf="@id/titleToolbar"
         android:src="@drawable/ic_menu"
-        android:tint="@color/black" />
+        android:tint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/titleToolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/titleToolbar" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/searchButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:padding="13dp"
         android:elevation="2dp"
-        app:layout_constraintEnd_toStartOf="@id/addButton"
-        app:layout_constraintTop_toTopOf="@id/titleToolbar"
-        app:layout_constraintBottom_toBottomOf="@id/titleToolbar"
+        android:padding="13dp"
         android:src="@drawable/ic_search"
-        android:tint="@color/black"/>
+        android:tint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/titleToolbar"
+        app:layout_constraintEnd_toStartOf="@id/addButton"
+        app:layout_constraintTop_toTopOf="@id/titleToolbar" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/addButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:elevation="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/titleToolbar"
-        app:layout_constraintBottom_toBottomOf="@id/titleToolbar"
         android:padding="5dp"
         android:src="@drawable/ic_add"
-        android:tint="@color/black" />
+        android:tint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/titleToolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/titleToolbar" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/searchInput"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:elevation="1dp"
         android:background="@drawable/background_radius_10dp"
         android:backgroundTint="@color/white"
-        android:textColor="@color/black"
+        android:elevation="1dp"
         android:hint="@string/search"
-        android:textColorHint="@color/grey_text"
-        android:paddingEnd="60dp"
+        android:inputType="text"
         android:paddingStart="20dp"
-        app:layout_constraintStart_toEndOf="@id/menuButton"
-        app:layout_constraintEnd_toEndOf="@id/searchButton"
-        app:layout_constraintTop_toTopOf="@id/titleToolbar"
+        android:paddingEnd="60dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey_text"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/titleToolbar"
-        android:visibility="gone"/>
+        app:layout_constraintEnd_toEndOf="@id/searchButton"
+        app:layout_constraintStart_toEndOf="@id/menuButton"
+        app:layout_constraintTop_toTopOf="@id/titleToolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,12 +2,10 @@ package com.marslan.stocktracking.services
 
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import com.marslan.stocktracking.database.table.Customer
-import com.marslan.stocktracking.database.table.Invoice
-import com.marslan.stocktracking.database.table.Product
-import java.util.*
+import com.marslan.stocktracking.services.model.Customer
+import com.marslan.stocktracking.services.model.Invoice
+import com.marslan.stocktracking.services.model.Product
 import javax.inject.Inject
-import kotlin.collections.HashMap
 
 class Request @Inject constructor(){
 
@@ -29,12 +27,6 @@ class Request @Inject constructor(){
     fun observeProductsMap(listener: ValueEventListener) = getProductRef().addValueEventListener(listener)
 
     fun observeInvoicesMap(listener: ValueEventListener) = getInvoiceRef().addValueEventListener(listener)
-
-    fun setCustomersMap(map: HashMap<String,Objects>) = getProductRef().setValue(map)
-
-    fun setProductsMap(map: HashMap<String,Objects>) = getProductRef().setValue(map)
-
-    fun setInvoicesMap(map: HashMap<String,Objects>) = getProductRef().setValue(map)
 
     fun addCustomer(id: String, value: Customer) = getProductRef().child(id).setValue(value)
 

@@ -45,10 +45,6 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt 'com.google.dagger:dagger-android-processor:2.40.5'
     kapt 'com.google.dagger:dagger-compiler:2.40.5'
-    // room
-    implementation "androidx.room:room-runtime:2.4.0"
-    implementation "androidx.room:room-ktx:2.4.0"
-    kapt "androidx.room:room-compiler:2.4.0"
     // firebase
     implementation platform('com.google.firebase:firebase-bom:29.0.3')
     implementation 'com.google.firebase:firebase-analytics-ktx:20.0.2'

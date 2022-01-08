@@ -2,22 +2,18 @@ package com.marslan.stocktracking.ui.main.view
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.MenuItem
 import com.marslan.stocktracking.R
 import com.marslan.stocktracking.base.BaseActivity
 import com.marslan.stocktracking.base.BaseFragment
-import com.marslan.stocktracking.core.extension.addProductScreen
-import com.marslan.stocktracking.core.extension.toast
 import com.marslan.stocktracking.databinding.ActivityMainBinding
 import com.marslan.stocktracking.ui.customer.view.CustomerFragment
 import com.marslan.stocktracking.ui.home.view.HomeFragment
 import com.marslan.stocktracking.ui.invoice.view.InvoiceFragment
-import com.marslan.stocktracking.ui.main.component.MainToolbar
 import com.marslan.stocktracking.ui.main.viewmodel.MainViewModel
 import com.marslan.stocktracking.ui.product.view.ProductFragment
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), MainToolbar.MainToolbarListener {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var mFragment: BaseFragment
@@ -32,70 +28,42 @@ class MainActivity : BaseActivity(), MainToolbar.MainToolbarListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mFragment = HomeFragment.newInstance()
         openFragment(getString(R.string.menu_home))
         binding.navView.setCheckedItem(R.id.nav_home)
+        setListeners()
 
-        binding.toolbar.addListener(this)
-        binding.navView.setNavigationItemSelectedListener(this::navigationListener)
+        observeData()
+    }
 
+    private fun observeData() {
         viewModel.observeProduct()
+        viewModel.observeCustomer()
     }
 
-    private fun navigationListener(item: MenuItem) : Boolean{
-        openFragment(item.title)
-        binding.drawerLayout.close()
-        return true
-    }
+    private fun setListeners() {
 
-    override fun menuButton() {
-        if (!binding.drawerLayout.isOpen)
-            binding.drawerLayout.open()
-        else
+        binding.navView.setNavigationItemSelectedListener {
+            openFragment(it.title)
             binding.drawerLayout.close()
-    }
-    override fun addButton() {
-        when(mFragment){
-            is HomeFragment -> {
-                toast("coming soon")
-            }
-            is ProductFragment -> {
-                addProductScreen { viewModel.post(it) }
-            }
-            is CustomerFragment -> {
-                toast("coming soon")
-            }
-            is InvoiceFragment -> {
-                toast("coming soon")
-            }
+            true
         }
     }
-    override fun searchChange(search: String?) {
-        when(mFragment){
-            is HomeFragment -> {
-                toast("coming soon")
-            }
-            is ProductFragment -> {
-                toast("coming soon")
-            }
-            is CustomerFragment -> {
-                toast("coming soon")
-            }
-            is InvoiceFragment -> {
-                toast("coming soon")
-            }
-        }
 
+    fun toggleMenu() {
+        if (binding.drawerLayout.isOpen)
+            binding.drawerLayout.close()
+        else
+            binding.drawerLayout.open()
     }
 
-    private fun openFragment(fragmentTitle: CharSequence){
+    private fun openFragment(fragmentTitle: CharSequence) {
         binding.toolbar.setTitle(
-            if(fragmentTitle == getString(R.string.menu_home))
+            if (fragmentTitle == getString(R.string.menu_home))
                 getString(R.string.app_name)
             else
                 fragmentTitle
         )
-        val fragment = when(fragmentTitle){
+        val fragment = when (fragmentTitle) {
             getString(R.string.menu_product) -> {
                 ProductFragment.newInstance()
             }
@@ -113,9 +81,10 @@ class MainActivity : BaseActivity(), MainToolbar.MainToolbarListener {
             }
         }
         supportFragmentManager.beginTransaction()
-            .replace(R.id.container,fragment)
+            .replace(R.id.container, fragment)
             .commit()
         mFragment = fragment
+        binding.toolbar.addListener(mFragment)
     }
 
     override fun onBackPressed() {

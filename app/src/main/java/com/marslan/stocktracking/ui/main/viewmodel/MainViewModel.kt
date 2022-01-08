@@ -1,14 +1,13 @@
 package com.marslan.stocktracking.ui.main.viewmodel
 
-import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.marslan.stocktracking.base.BaseViewModel
-import com.marslan.stocktracking.database.table.Product
+import com.marslan.stocktracking.core.helper.DataHelper
+import com.marslan.stocktracking.services.model.Customer
+import com.marslan.stocktracking.services.model.Product
 import com.marslan.stocktracking.ui.main.data.MainRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor() : BaseViewModel() {
@@ -16,33 +15,35 @@ class MainViewModel @Inject constructor() : BaseViewModel() {
     @Inject
     lateinit var repository: MainRepository
 
-    fun post(value: Product) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.addProduct(value.id.toString(), value)
-        }
-    }
-
     fun observeProduct() = repository.observeProducts(productListener)
 
-    private val productListener = object : ValueEventListener{
+    private val productListener = object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
-            viewModelScope.launch(Dispatchers.IO) {
-                repository.removeAllProduct()
-                for (child in snapshot.children){
-                    val product = child.getValue(Product::class.java) ?: continue
-                    updateController(product)
+            val list = arrayListOf<Product>()
+            for(child in snapshot.children) {
+                child.getValue(Product::class.java)?.let {
+                    list.add(it)
                 }
             }
-
+            DataHelper.setProducts(list)
         }
+
         override fun onCancelled(error: DatabaseError) {}
     }
 
-    private suspend fun updateController(product: Product){
-            val entity = repository.findProductByID(product.id)
-            if (entity == null)
-                repository.createProduct(product)
-            else
-                repository.updateProduct(product)
+    fun observeCustomer() = repository.observeCustomers(customerListener)
+
+    private val customerListener = object : ValueEventListener {
+        override fun onDataChange(snapshot: DataSnapshot) {
+            val list = arrayListOf<Customer>()
+            for(child in snapshot.children) {
+                child.getValue(Customer::class.java)?.let {
+                    list.add(it)
+                }
+            }
+            DataHelper.setCustomers(list)
+        }
+
+        override fun onCancelled(error: DatabaseError) {}
     }
 }

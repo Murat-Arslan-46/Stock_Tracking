@@ -1,22 +1,22 @@
 package com.marslan.stocktracking.ui.product.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.marslan.stocktracking.R
 import com.marslan.stocktracking.base.BaseFragment
+import com.marslan.stocktracking.core.extension.addProductScreen
 import com.marslan.stocktracking.core.extension.editProductScreen
-import com.marslan.stocktracking.core.extension.toast
-import com.marslan.stocktracking.database.table.Product
+import com.marslan.stocktracking.core.helper.DataHelper
+import com.marslan.stocktracking.core.helper.DataLiveHelper
+import com.marslan.stocktracking.services.model.Product
 import com.marslan.stocktracking.databinding.FragmentProductBinding
 import com.marslan.stocktracking.ui.product.component.ProductRecyclerView
 import com.marslan.stocktracking.ui.product.viewmodel.ProductViewModel
 import java.util.ArrayList
 import javax.inject.Inject
 
-class ProductFragment : BaseFragment(), ProductRecyclerView.ItemEventListener {
+class ProductFragment : BaseFragment(), ProductRecyclerView.ItemEventListener,DataLiveHelper {
 
     private lateinit var binding: FragmentProductBinding
 
@@ -27,16 +27,35 @@ class ProductFragment : BaseFragment(), ProductRecyclerView.ItemEventListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel.getProducts().observe(viewLifecycleOwner,this::observer)
         binding = FragmentProductBinding.inflate(layoutInflater)
         binding.productRV.listener = this
+        binding.productRefresh.isRefreshing = true
+        viewModel.getProducts()?.let { observer(it) }
+        binding.productRefresh.setOnRefreshListener {
+            viewModel.getProducts()?.let { observer(it) }
+        }
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        DataHelper.onChangeListener = this
+    }
+
+    override fun onChangeProduct() {
+        viewModel.getProducts()?.let { observer(it) }
     }
 
     private fun observer(list: List<Product>){
         binding.list = list as ArrayList
         binding.executePendingBindings()
+        binding.productRefresh.isRefreshing = false
     }
+
+    override fun addButton() {
+        requireActivity().addProductScreen { viewModel.post(it) }
+    }
+
 
     companion object {
 

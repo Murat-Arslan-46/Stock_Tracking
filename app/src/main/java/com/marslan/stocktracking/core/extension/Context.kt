@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import com.marslan.stocktracking.R
-import com.marslan.stocktracking.database.table.Product
+import com.marslan.stocktracking.services.model.Product
 import com.marslan.stocktracking.databinding.DialogAddProductBinding
 import com.marslan.stocktracking.databinding.DialogEditProductBinding
 import java.lang.Exception

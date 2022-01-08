@@ -15,8 +15,7 @@ import javax.inject.Singleton
     ActivityBuilder::class,
     FragmentBuilder::class,
     ApplicationModule::class,
-    NetworkModule::class,
-    RoomModule::class
+    NetworkModule::class
 ])
 interface ApplicationComponent : AndroidInjector<StockTrackingApplication> {
 

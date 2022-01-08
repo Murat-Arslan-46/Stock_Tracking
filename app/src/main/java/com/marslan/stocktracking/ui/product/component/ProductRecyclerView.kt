@@ -3,15 +3,11 @@ package com.marslan.stocktracking.ui.product.component
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.marslan.stocktracking.core.extension.editProductScreen
-import com.marslan.stocktracking.core.extension.toast
-import com.marslan.stocktracking.database.table.Product
-import com.marslan.stocktracking.databinding.ItemViewProductBinding
+import com.marslan.stocktracking.services.model.Product
 
 class ProductRecyclerView : RecyclerView {
     constructor(context: Context) : this(context, null)

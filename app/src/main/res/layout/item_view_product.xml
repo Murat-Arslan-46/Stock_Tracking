@@ -4,7 +4,7 @@
     <data>
         <variable
             name="product"
-            type="com.marslan.stocktracking.database.table.Product" />
+            type="com.marslan.stocktracking.services.model.Product" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

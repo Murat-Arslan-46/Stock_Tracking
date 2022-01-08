@@ -1,10 +1,12 @@
 package com.marslan.stocktracking.ui.main.component
 
 import android.content.Context
+import android.text.Editable
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import androidx.core.widget.addTextChangedListener
 import com.marslan.stocktracking.core.extension.scaleDownHorizontal
 import com.marslan.stocktracking.core.extension.scaleUpHorizontal
 import com.marslan.stocktracking.databinding.MainToolbarBinding
@@ -21,7 +23,7 @@ class MainToolbar : LinearLayout {
     interface MainToolbarListener{
         fun menuButton()
         fun addButton()
-        fun searchChange(search: String?)
+        fun searchChange(search: Editable?)
     }
 
     private var binding: MainToolbarBinding
@@ -51,6 +53,9 @@ class MainToolbar : LinearLayout {
         }
         binding.addButton.setOnClickListener {
             listener?.addButton()
+        }
+        binding.searchInput.addTextChangedListener {
+            listener?.searchChange(it)
         }
     }
 }
