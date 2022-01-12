@@ -4,4 +4,6 @@ interface DataLiveHelper {
 
     fun onChangeProduct(){}
     fun onChangeCustomer(){}
+    fun onChangeOrder(){}
+    fun onChangeInvoice(){}
 }

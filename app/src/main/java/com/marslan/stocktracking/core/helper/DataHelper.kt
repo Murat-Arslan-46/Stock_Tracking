@@ -8,8 +8,6 @@ class DataHelper {
         var dataModel: DataModel = DataModel()
         var onChangeListener: DataLiveHelper? = null
 
-        fun loadData(dataModel: DataModel){ this.dataModel = dataModel }
-
         fun setCustomers(customers: List<Customer>){
             dataModel.customers = customers
             onChangeListener?.onChangeCustomer()
@@ -22,8 +20,17 @@ class DataHelper {
         }
         fun getProducts() = dataModel.products
 
-        fun setInvoices(invoices: HashMap<String,List<Invoice>>){ dataModel.invoices = invoices }
-        fun getInvoices(date: String) = dataModel.invoices?.get(date)
+        fun setInvoices(invoices: List<Invoice>){
+            dataModel.invoices = invoices
+            onChangeListener?.onChangeInvoice()
+        }
+        fun getInvoices() = dataModel.invoices
+
+        fun setOrders(orders: List<Order>){
+            dataModel.orders = orders
+            onChangeListener?.onChangeOrder()
+        }
+        fun getOrders() = dataModel.orders
 
         fun setSettings(settings: Settings){ dataModel.settings = settings }
         fun getSettings() = dataModel.settings

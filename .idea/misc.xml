@@ -16,17 +16,23 @@
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/activity_main.xml" value="0.17980072463768115" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/app_bar_main.xml" value="0.17980072463768115" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/app_product_layout.xml" value="0.25" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/base_alert_dialog_layout.xml" value="0.23822463768115942" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/base_dialog_layout.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/base_input_layout.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/content_main.xml" value="0.13360507246376813" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/dialog_add_customer.xml" value="0.23369565217391305" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/dialog_add_product.xml" value="0.24728260869565216" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/dialog_edit_product.xml" value="0.24728260869565216" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/fragment_customer.xml" value="0.25" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/fragment_gallery.xml" value="0.17980072463768115" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/fragment_invoice.xml" value="0.25" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/fragment_order.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/fragment_product.xml" value="0.2" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/fragment_slideshow.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/input_view_phone.xml" value="0.4" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/item_view_customer.xml" value="0.23369565217391305" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/item_view_order.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/item_view_product.xml" value="0.25" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/main_toolbar.xml" value="0.25" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/nav_header.xml" value="0.264" />

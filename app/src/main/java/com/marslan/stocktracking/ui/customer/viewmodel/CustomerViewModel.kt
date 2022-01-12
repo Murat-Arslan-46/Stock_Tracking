@@ -13,6 +13,8 @@ class CustomerViewModel @Inject constructor() : BaseViewModel() {
     @Inject
     lateinit var repository: CustomerRepository
 
+    fun getCustomers() = repository.getCustomers()
+
     fun setCustomer(id: String, value: Customer) = repository.setCustomer(id, value)
 
     fun post(value: Customer) {

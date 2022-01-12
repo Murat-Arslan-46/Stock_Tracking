@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:customer="http://schemas.android.com/apk/res-auto">
+    xmlns:order="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="list"
-            type="java.util.ArrayList&lt;com.marslan.stocktracking.services.model.Customer&gt;" />
+            type="java.util.ArrayList&lt;com.marslan.stocktracking.services.model.Order&gt;" />
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/customerRefresh"
+        android:id="@+id/orderRefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -27,7 +27,7 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/itemViewCustomerName"
+                    android:id="@+id/itemViewOrderCustomerName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -35,12 +35,12 @@
                     android:text="@string/name" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/itemViewCustomerPhone"
+                    android:id="@+id/itemViewOrderTotal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/phone" />
+                    android:text="@string/total" />
 
             </LinearLayout>
 
@@ -50,15 +50,14 @@
                 android:layout_marginHorizontal="30dp"
                 android:background="@color/grey" />
 
-            <com.marslan.stocktracking.ui.customer.component.CustomerRecyclerView
-                android:id="@+id/customerRV"
+            <com.marslan.stocktracking.ui.order.component.OrderRecyclerView
+                android:id="@+id/OrderRV"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                customer:loadData="@{list}" />
+                order:loadData="@{list}" />
 
         </LinearLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
 </layout>

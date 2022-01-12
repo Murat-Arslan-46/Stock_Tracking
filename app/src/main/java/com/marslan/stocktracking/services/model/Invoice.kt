@@ -1,10 +1,19 @@
 package com.marslan.stocktracking.services.model
 
-data class Invoice(
-    var id: Int?,
-    var customer: Int?,
-    var products: List<Product>?,
-    var date: Long?,
-    var total: Double?,
-    var remainder: Double?
-)
+import java.io.Serializable
+
+class Invoice : Serializable {
+
+    var id: Int? = null
+    var order: Int? = null
+    var pay: Double? = null
+
+    constructor()
+
+    constructor(
+        id: Int?, order: Int?, pay: Double?){
+        this.id = id
+        this.order = order
+        this.pay = pay
+    }
+}

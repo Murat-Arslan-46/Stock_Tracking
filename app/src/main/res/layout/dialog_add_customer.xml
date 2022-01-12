@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="@drawable/ic_customer"
+        android:elevation="1dp"
+        android:tint="@color/color_secondary_dark"
+        android:layout_margin="35dp"
+        app:layout_constraintStart_toStartOf="@id/addCustomerRoot"
+        app:layout_constraintEnd_toEndOf="@id/addCustomerRoot"
+        app:layout_constraintBottom_toTopOf="@id/addCustomerRoot"/>
+
+    <LinearLayout
+        android:id="@+id/addCustomerRoot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="170dp"
+        android:background="@drawable/background_radius_10dp"
+        android:backgroundTint="@color/color_primary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:layout_marginHorizontal="10dp"
+            android:textSize="17sp"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/addCustomerName"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/white"
+            android:paddingHorizontal="15dp"
+            android:hint="@string/required"
+            android:textColorHint="@color/grey_text"
+            android:textColor="@color/black"
+            android:background="@drawable/background_radius_10dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone"
+            android:layout_marginHorizontal="10dp"
+            android:textSize="17sp"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/addCustomerPhone"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/background_radius_10dp"
+            android:backgroundTint="@color/white"
+            android:hint="@string/default_phone_value"
+            android:inputType="numberSigned"
+            android:paddingHorizontal="15dp"
+            android:textColorHint="@color/grey_text" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/addCustomerCancel"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:background="@drawable/background_radius_10dp"
+        android:backgroundTint="@color/red"
+        android:tint="@color/white"
+        android:src="@drawable/ic_cancel"
+        app:layout_constraintStart_toStartOf="@id/addCustomerRoot"
+        app:layout_constraintTop_toBottomOf="@id/addCustomerRoot"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/addCustomerSuccess"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:padding="6dp"
+        android:background="@drawable/background_radius_10dp"
+        android:backgroundTint="@color/green"
+        android:tint="@color/white"
+        android:src="@drawable/ic_success"
+        app:layout_constraintEnd_toEndOf="@id/addCustomerRoot"
+        app:layout_constraintTop_toBottomOf="@id/addCustomerRoot"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

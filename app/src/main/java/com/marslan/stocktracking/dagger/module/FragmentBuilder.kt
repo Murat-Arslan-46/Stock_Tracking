@@ -2,7 +2,7 @@ package com.marslan.stocktracking.dagger.module
 
 import com.marslan.stocktracking.ui.customer.view.CustomerFragment
 import com.marslan.stocktracking.ui.home.view.HomeFragment
-import com.marslan.stocktracking.ui.invoice.view.InvoiceFragment
+import com.marslan.stocktracking.ui.order.view.OrderFragment
 import com.marslan.stocktracking.ui.product.view.ProductFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -20,5 +20,5 @@ abstract class FragmentBuilder {
     abstract fun bindCustomerFragment() : CustomerFragment
 
     @ContributesAndroidInjector
-    abstract fun bindInvoiceFragment() : InvoiceFragment
+    abstract fun bindOrderFragment() : OrderFragment
 }

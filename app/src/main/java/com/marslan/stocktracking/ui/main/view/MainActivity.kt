@@ -8,7 +8,7 @@ import com.marslan.stocktracking.base.BaseFragment
 import com.marslan.stocktracking.databinding.ActivityMainBinding
 import com.marslan.stocktracking.ui.customer.view.CustomerFragment
 import com.marslan.stocktracking.ui.home.view.HomeFragment
-import com.marslan.stocktracking.ui.invoice.view.InvoiceFragment
+import com.marslan.stocktracking.ui.order.view.OrderFragment
 import com.marslan.stocktracking.ui.main.viewmodel.MainViewModel
 import com.marslan.stocktracking.ui.product.view.ProductFragment
 import javax.inject.Inject
@@ -38,6 +38,7 @@ class MainActivity : BaseActivity() {
     private fun observeData() {
         viewModel.observeProduct()
         viewModel.observeCustomer()
+        viewModel.observeOrder()
     }
 
     private fun setListeners() {
@@ -74,7 +75,7 @@ class MainActivity : BaseActivity() {
                 CustomerFragment.newInstance()
             }
             getString(R.string.menu_invoice) -> {
-                InvoiceFragment.newInstance()
+                OrderFragment.newInstance()
             }
             else -> {
                 HomeFragment.newInstance()

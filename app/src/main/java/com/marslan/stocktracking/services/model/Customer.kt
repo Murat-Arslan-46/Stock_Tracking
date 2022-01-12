@@ -2,11 +2,22 @@ package com.marslan.stocktracking.services.model
 
 import java.io.Serializable
 
-data class Customer(
-    var id: Int?,
-    var name: String?,
-    var company: String?,
-    var address: String?,
-    var phone: List<String>?,
-    var mail: String?
-) : Serializable
+class Customer : Serializable{
+
+    var id: Int? = null
+    var name: String? = null
+    var company: String? = null
+    var address: String? = null
+    var phone: List<String>? = null
+    var mail: String? = null
+
+    constructor()
+    constructor( id: Int?, name: String?, company: String?, address: String?, phone: List<String>?, mail: String?){
+        this.id = id
+        this.name = name
+        this.company = company
+        this.address = address
+        this.phone = phone
+        this.mail = mail
+    }
+}

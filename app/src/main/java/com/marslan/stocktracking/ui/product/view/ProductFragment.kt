@@ -16,7 +16,7 @@ import com.marslan.stocktracking.ui.product.viewmodel.ProductViewModel
 import java.util.ArrayList
 import javax.inject.Inject
 
-class ProductFragment : BaseFragment(), ProductRecyclerView.ItemEventListener,DataLiveHelper {
+class ProductFragment : BaseFragment(), ProductRecyclerView.ItemEventListener {
 
     private lateinit var binding: FragmentProductBinding
 
@@ -35,11 +35,6 @@ class ProductFragment : BaseFragment(), ProductRecyclerView.ItemEventListener,Da
             viewModel.getProducts()?.let { observer(it) }
         }
         return binding.root
-    }
-
-    override fun onResume() {
-        super.onResume()
-        DataHelper.onChangeListener = this
     }
 
     override fun onChangeProduct() {

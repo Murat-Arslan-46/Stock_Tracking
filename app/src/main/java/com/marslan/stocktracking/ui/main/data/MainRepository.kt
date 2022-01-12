@@ -12,4 +12,8 @@ class MainRepository @Inject constructor() {
     fun observeProducts(listener: ValueEventListener) = request.observeProductsMap(listener)
 
     fun observeCustomers(listener: ValueEventListener) = request.observeCustomersMap(listener)
+
+    fun observeInvoices(listener: ValueEventListener) = request.observeInvoicesMap(listener)
+
+    fun observeOrders(listener: ValueEventListener) = request.observeOrderMap(listener)
 }
