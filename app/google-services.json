@@ -1,7 +1,7 @@
 {
   "project_info": {
     "project_number": "449431936192",
-    "firebase_url": "https://stock-tracking-1a078-default-rtdb.europe-west1.firebasedatabase.app/",
+    "firebase_url": "https://stock-tracking-1a078-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "stock-tracking-1a078",
     "storage_bucket": "stock-tracking-1a078.appspot.com"
   },

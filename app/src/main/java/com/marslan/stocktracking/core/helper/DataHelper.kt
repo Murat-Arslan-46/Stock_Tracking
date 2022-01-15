@@ -9,13 +9,13 @@ class DataHelper {
         var onChangeListener: DataLiveHelper? = null
 
         fun setCustomers(customers: List<Customer>){
-            dataModel.customers = customers
+            dataModel.customers = customers.sortedBy { it.name }
             onChangeListener?.onChangeCustomer()
         }
         fun getCustomers() = dataModel.customers
 
         fun setProducts(products: List<Product>){
-            dataModel.products = products
+            dataModel.products = products.sortedBy { it.name }
             onChangeListener?.onChangeProduct()
         }
         fun getProducts() = dataModel.products
@@ -27,7 +27,7 @@ class DataHelper {
         fun getInvoices() = dataModel.invoices
 
         fun setOrders(orders: List<Order>){
-            dataModel.orders = orders
+            dataModel.orders = orders.sortedByDescending { it.date }
             onChangeListener?.onChangeOrder()
         }
         fun getOrders() = dataModel.orders

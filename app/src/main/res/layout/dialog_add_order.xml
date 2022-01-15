@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="@drawable/ic_customer"
+        android:elevation="1dp"
+        android:tint="@color/color_secondary_dark"
+        android:layout_margin="35dp"
+        app:layout_constraintStart_toStartOf="@id/addOrderRoot"
+        app:layout_constraintEnd_toEndOf="@id/addOrderRoot"
+        app:layout_constraintBottom_toTopOf="@id/addOrderRoot"/>
+
+    <LinearLayout
+        android:id="@+id/addOrderRoot"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/background_radius_10dp"
+        android:backgroundTint="@color/color_primary"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="@string/menu_customer"
+            android:textSize="17sp" />
+
+        <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+            android:id="@+id/customerSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintText="@string/select_customer"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="@string/phone"
+            android:textSize="17sp" />
+
+        <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+            android:id="@+id/productSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintText="@string/select_product"/>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/addOrderCancel"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:background="@drawable/background_radius_10dp"
+        android:backgroundTint="@color/red"
+        android:tint="@color/white"
+        android:src="@drawable/ic_cancel"
+        app:layout_constraintStart_toStartOf="@id/addOrderRoot"
+        app:layout_constraintTop_toBottomOf="@id/addOrderRoot"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/addOrderSuccess"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:padding="6dp"
+        android:background="@drawable/background_radius_10dp"
+        android:backgroundTint="@color/green"
+        android:tint="@color/white"
+        android:src="@drawable/ic_success"
+        app:layout_constraintEnd_toEndOf="@id/addOrderRoot"
+        app:layout_constraintTop_toBottomOf="@id/addOrderRoot"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,11 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import com.marslan.stocktracking.R
+import com.marslan.stocktracking.core.component.CustomerSpinnerAdapter
+import com.marslan.stocktracking.core.component.ProductSpinnerAdapter
+import com.marslan.stocktracking.core.helper.DataHelper
 import com.marslan.stocktracking.databinding.DialogAddCustomerBinding
+import com.marslan.stocktracking.databinding.DialogAddOrderBinding
 import com.marslan.stocktracking.databinding.DialogAddProductBinding
 import com.marslan.stocktracking.databinding.DialogEditProductBinding
 import com.marslan.stocktracking.services.model.Customer
@@ -165,7 +169,12 @@ fun Context.addCustomerScreen(listener: (Customer) -> Unit) {
                 .replace(".", "")
                 .replace(",", "")
                 .replace("-", "")
-            view.addCustomerPhone.setText(if (result.length < 11) result else result.substring(0, 11))
+            view.addCustomerPhone.setText(
+                if (result.length < 11) result else result.substring(
+                    0,
+                    11
+                )
+            )
             view.addCustomerPhone.setSelection(result.length)
         }
     }
@@ -177,40 +186,44 @@ fun Context.addCustomerScreen(listener: (Customer) -> Unit) {
 
 
 fun Context.addOrderScreen(listener: (Order) -> Unit) {
-    val view = DialogAddCustomerBinding.inflate(LayoutInflater.from(this), null, false)
-
+    val view = DialogAddOrderBinding.inflate(LayoutInflater.from(this), null, false)
+    var customer: Customer? = null
+    var product: Product? = null
     val dialog = AlertDialog.Builder(this)
         .setView(view.root)
         .setCancelable(false)
         .create()
-
-    view.addCustomerSuccess.setOnClickListener {
+    view.customerSpinner.adapter =
+        CustomerSpinnerAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            DataHelper.getCustomers()?.toTypedArray() ?: arrayOf()
+        )
+    view.customerSpinner.setOnItemClickListener { _, _, position, _ ->
+        customer = DataHelper.getCustomers()?.get(position)
+    }
+    view.productSpinner.adapter =
+        ProductSpinnerAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            DataHelper.getProducts()?.toTypedArray() ?: arrayOf()
+        )
+    view.customerSpinner.setOnItemClickListener { _, _, position, _ ->
+        product = DataHelper.getProducts()?.get(position)
+    }
+    view.addOrderSuccess.setOnClickListener {
         listener(
             Order(
                 (0..999999999).random(),
-                1,
+                customer?.id ?: 1,
                 "me",
-                listOf(Product(1,"w",2.0,10)),
+                listOf(product ?: Product(1, "w", 2.0, 10)),
                 Date().time
             )
         )
         dialog.dismiss()
     }
-    view.addCustomerCancel.setOnClickListener { dialog.dismiss() }
-    view.addCustomerPhone.addTextChangedListener {
-
-        if (!it.isNullOrBlank() && (it.any { c -> c == '.' || c == ',' || c == ' ' || c == '-' } || it.length > 11)) {
-            val result = it.toString()
-                .replace("(", "")
-                .replace(")", "")
-                .replace(" ", "")
-                .replace(".", "")
-                .replace(",", "")
-                .replace("-", "")
-            view.addCustomerPhone.setText(if (result.length < 11) result else result.substring(0, 11))
-            view.addCustomerPhone.setSelection(result.length)
-        }
-    }
+    view.addOrderCancel.setOnClickListener { dialog.dismiss() }
     dialog.window?.setBackgroundDrawableResource(R.drawable.background_radius_10dp_transparent)
     dialog.window?.attributes?.gravity = Gravity.TOP
     dialog.show()

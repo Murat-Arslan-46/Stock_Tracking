@@ -29,7 +29,6 @@ class MainActivity : BaseActivity() {
         setContentView(binding.root)
 
         openFragment(getString(R.string.menu_home))
-        binding.navView.setCheckedItem(R.id.nav_home)
         setListeners()
 
         observeData()
@@ -43,18 +42,9 @@ class MainActivity : BaseActivity() {
 
     private fun setListeners() {
 
-        binding.navView.setNavigationItemSelectedListener {
-            openFragment(it.title)
-            binding.drawerLayout.close()
-            true
-        }
     }
 
     fun toggleMenu() {
-        if (binding.drawerLayout.isOpen)
-            binding.drawerLayout.close()
-        else
-            binding.drawerLayout.open()
     }
 
     private fun openFragment(fragmentTitle: CharSequence) {
@@ -93,7 +83,6 @@ class MainActivity : BaseActivity() {
             finish()
         else {
             openFragment(getString(R.string.menu_home))
-            binding.navView.setCheckedItem(R.id.nav_home)
         }
     }
 }

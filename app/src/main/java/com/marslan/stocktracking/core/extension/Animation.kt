@@ -108,3 +108,77 @@ fun View.scaleDownHorizontal(gravity: Int) {
     set.addAnimation(anim)
     startAnimation(set)
 }
+
+fun View.scaleUpVertical(gravity: Int) {
+    val anim = when (gravity) {
+        Gravity.TOP -> {
+            ScaleAnimation(
+                1f,
+                1f,
+                0f,
+                1f,
+                Animation.RELATIVE_TO_SELF,
+                0f,
+                Animation.RELATIVE_TO_SELF,
+                0f
+            )
+        }
+        else -> {
+            ScaleAnimation(
+                1f,
+                1f,
+                0f,
+                1f,
+                Animation.RELATIVE_TO_SELF,
+                0f,
+                Animation.RELATIVE_TO_SELF,
+                1f
+            )
+        }
+    }
+    val alphaAnimation = AlphaAnimation(0f,1f)
+    alphaAnimation.duration = 100
+    anim.duration = 200
+    val set = AnimationSet(false)
+    set.addAnimation(alphaAnimation)
+    set.addAnimation(anim)
+    startAnimation(set)
+    visible()
+}
+
+fun View.scaleDownVertical(gravity: Int) {
+    val anim = when (gravity) {
+        Gravity.TOP -> {
+            ScaleAnimation(
+                1f,
+                1f,
+                1f,
+                0f,
+                Animation.RELATIVE_TO_SELF,
+                0f,
+                Animation.RELATIVE_TO_SELF,
+                0f
+            )
+        }
+        else -> {
+            ScaleAnimation(
+                1f,
+                1f,
+                1f,
+                0f,
+                Animation.RELATIVE_TO_SELF,
+                0f,
+                Animation.RELATIVE_TO_SELF,
+                1f
+            )
+        }
+    }
+    val alphaAnimation = AlphaAnimation(1f,0f)
+    alphaAnimation.duration = 100
+    anim.duration = 200
+    val set = AnimationSet(false)
+    set.addAnimation(alphaAnimation)
+    set.addAnimation(anim)
+    startAnimation(set)
+    gone()
+}
