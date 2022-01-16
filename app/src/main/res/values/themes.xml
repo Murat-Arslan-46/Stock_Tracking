@@ -14,7 +14,7 @@
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowTranslucentStatus">true</item>
         <!-- Customize your theme here. -->
-        <item name="android:fontFamily">@font/paprika</item>
+        <item name="android:fontFamily">@font/lalezar</item>
     </style>
 
     <style name="Theme.StockTracking.NoActionBar">

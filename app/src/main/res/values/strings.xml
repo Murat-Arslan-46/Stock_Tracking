@@ -1,23 +1,19 @@
 <resources>
-    <string name="app_name">Stock Tracking</string>
-    <string name="nav_header_title">Stock Tracking</string>
-    <string name="nav_header_subtitle">stock.tracking@marslan.com</string>
-
-    <string name="menu_home">Home</string>
-    <string name="menu_product">Product</string>
-    <string name="search">Search</string>
-    <string name="name">Name</string>
-    <string name="price">Price</string>
-    <string name="count">Count</string>
-    <string name="required">Required</string>
+    <string name="app_name">Stok Takiçim</string>
+    <string name="menu_home">Anasayfa</string>
+    <string name="menu_product">Ürünler</string>
+    <string name="search">Ara</string>
+    <string name="name">İsim</string>
+    <string name="price">Fiyat</string>
+    <string name="count">Miktar</string>
+    <string name="required">Zorunlu</string>
     <string name="default_price_value">0.00</string>
-    <string name="menu_customer">Customer</string>
-    <string name="menu_invoice">Invoice</string>
+    <string name="menu_customer">Müşteriler</string>
+    <string name="menu_order">Siparişler</string>
     <string name="default_count_value">0</string>
-    <string name="phone">Phone</string>
+    <string name="phone">Telefon</string>
     <string name="default_phone_value">(000)-000-00-00</string>
-    <string name="total">Total</string>
-    <string name="select_product">Select Product</string>
-    <string name="select_customer">Select Customer</string>
-    <string name="menu_add">Add</string>
+    <string name="total">Toplam</string>
+    <string name="select_product">Ürün Seçin</string>
+    <string name="select_customer">Müşteri Seçin</string>
 </resources>

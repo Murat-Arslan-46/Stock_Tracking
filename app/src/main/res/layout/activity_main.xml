@@ -78,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="@string/menu_invoice"
+                android:text="@string/menu_order"
                 android:textColor="@color/grey_text"
                 android:textSize="11sp" />
 
@@ -97,7 +97,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="13dp"
-                android:src="@drawable/ic_customer"
+                android:src="@drawable/ic_product"
                 android:tint="@color/grey_text" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -105,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="@string/menu_customer"
+                android:text="@string/menu_product"
                 android:textColor="@color/grey_text"
                 android:textSize="11sp" />
 
@@ -124,7 +124,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="13dp"
-                android:src="@drawable/ic_product"
+                android:src="@drawable/ic_customer"
                 android:tint="@color/grey_text" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -132,7 +132,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="@string/menu_product"
+                android:text="@string/menu_customer"
                 android:textColor="@color/grey_text"
                 android:textSize="11sp" />
 

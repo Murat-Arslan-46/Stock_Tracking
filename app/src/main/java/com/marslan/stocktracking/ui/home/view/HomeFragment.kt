@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.marslan.stocktracking.base.BaseFragment
 import com.marslan.stocktracking.databinding.FragmentHomeBinding
+import kotlinx.coroutines.delay
 
 class HomeFragment : BaseFragment() {
 
@@ -28,11 +29,11 @@ class HomeFragment : BaseFragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(layoutInflater)
         bottomSheet = BottomSheetBehavior.from(binding.homeBottomSheet)
-        binding.appHeader.post {
+        bottomSheet.state = BottomSheetBehavior.STATE_EXPANDED
+        binding.appHeader.postDelayed({
             bottomSheet.peekHeight = binding.root.height - binding.appHeader.height
             bottomSheet.state = BottomSheetBehavior.STATE_COLLAPSED
-        }
-
+        },200)
         bottomSheet.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 if (newState == BottomSheetBehavior.STATE_EXPANDED) {

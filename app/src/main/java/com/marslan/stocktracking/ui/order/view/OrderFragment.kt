@@ -4,14 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.marslan.stocktracking.R
 import com.marslan.stocktracking.base.BaseFragment
-import com.marslan.stocktracking.core.extension.addCustomerScreen
-import com.marslan.stocktracking.core.extension.addOrderScreen
 import com.marslan.stocktracking.databinding.FragmentOrderBinding
-import com.marslan.stocktracking.services.model.Customer
 import com.marslan.stocktracking.services.model.Order
 import com.marslan.stocktracking.ui.order.viewmodel.OrderViewModel
-import java.util.ArrayList
 import javax.inject.Inject
 
 class OrderFragment : BaseFragment() {
@@ -34,6 +31,7 @@ class OrderFragment : BaseFragment() {
     ): View {
         binding = FragmentOrderBinding.inflate(layoutInflater)
         binding.orderRefresh.isRefreshing = true
+        binding.toolbar.toolbarTitle.text = getString(R.string.menu_order)
         viewModel.getOrders()?.let { observer(it) }
         binding.orderRefresh.setOnRefreshListener {
             viewModel.getOrders()?.let { observer(it) }

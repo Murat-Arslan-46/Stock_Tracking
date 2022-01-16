@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.marslan.stocktracking.R
 import com.marslan.stocktracking.base.BaseFragment
 import com.marslan.stocktracking.core.extension.addProductScreen
 import com.marslan.stocktracking.core.extension.editProductScreen
@@ -30,6 +31,7 @@ class ProductFragment : BaseFragment(), ProductRecyclerView.ItemEventListener {
     ): View {
         binding = FragmentProductBinding.inflate(layoutInflater)
         binding.productRV.listener = this
+        binding.toolbar.toolbarTitle.text = getString(R.string.menu_product)
         binding.productRefresh.isRefreshing = true
         viewModel.getProducts()?.let { observer(it) }
         binding.productRefresh.setOnRefreshListener {

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.marslan.stocktracking.R
 import com.marslan.stocktracking.base.BaseFragment
 import com.marslan.stocktracking.core.extension.addCustomerScreen
 import com.marslan.stocktracking.databinding.FragmentCustomerBinding
@@ -33,6 +34,7 @@ class CustomerFragment : BaseFragment() {
     ): View {
         binding = FragmentCustomerBinding.inflate(layoutInflater)
         binding.customerRefresh.isRefreshing = true
+        binding.toolbar.toolbarTitle.text = getString(R.string.menu_customer)
         viewModel.getCustomers()?.let { observer(it) }
         binding.customerRefresh.setOnRefreshListener {
             viewModel.getCustomers()?.let { observer(it) }
