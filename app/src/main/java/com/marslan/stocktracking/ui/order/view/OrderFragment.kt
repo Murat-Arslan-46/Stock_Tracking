@@ -46,14 +46,10 @@ class OrderFragment : BaseFragment() {
     }
 
     private fun observer(list: List<Order>) {
-        binding.list = list as ArrayList
+        val array = arrayListOf<Order>()
+        array.addAll(list)
+        binding.list = array
         binding.executePendingBindings()
         binding.orderRefresh.isRefreshing = false
-    }
-
-    override fun addButton() {
-        requireActivity().addOrderScreen {
-            viewModel.post(it)
-        }
     }
 }

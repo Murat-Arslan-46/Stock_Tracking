@@ -8,6 +8,7 @@ import com.marslan.stocktracking.base.BaseFragment
 import com.marslan.stocktracking.core.extension.addCustomerScreen
 import com.marslan.stocktracking.databinding.FragmentCustomerBinding
 import com.marslan.stocktracking.services.model.Customer
+import com.marslan.stocktracking.services.model.Order
 import com.marslan.stocktracking.ui.customer.viewmodel.CustomerViewModel
 import java.util.*
 import javax.inject.Inject
@@ -44,14 +45,10 @@ class CustomerFragment : BaseFragment() {
     }
 
     private fun observer(list: List<Customer>) {
-        binding.list = list as ArrayList
+        val array = arrayListOf<Customer>()
+        array.addAll(list)
+        binding.list = array
         binding.executePendingBindings()
         binding.customerRefresh.isRefreshing = false
-    }
-
-    override fun addButton() {
-        requireActivity().addCustomerScreen {
-            viewModel.post(it)
-        }
     }
 }

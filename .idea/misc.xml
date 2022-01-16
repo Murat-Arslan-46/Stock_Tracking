@@ -9,9 +9,15 @@
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/drawable/circle_border_2dp.xml" value="0.26205128205128203" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/drawable/foreground_radius_10dp.xml" value="0.13541666666666666" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/drawable/ic_add.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/drawable/ic_avatar.xml" value="0.26205128205128203" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/drawable/ic_home.xml" value="0.2611111111111111" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/drawable/ic_house.xml" value="0.26205128205128203" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/drawable/ic_product.xml" value="0.22777777777777777" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/drawable/ic_success.xml" value="0.2611111111111111" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/drawable/nav_bar_header.xml" value="0.21851851851851853" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/drawable/shadow.xml" value="0.2611111111111111" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/drawable/shadow_top.xml" value="0.2611111111111111" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/drawable/side_nav_bar.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/drawable/tool_bar_header.xml" value="0.21851851851851853" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/font/chicle.xml" value="0.28020833333333334" />
@@ -38,7 +44,7 @@
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/item_view_order.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/item_view_product.xml" value="0.25" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/main_bottombar.xml" value="0.4" />
-        <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/main_toolbar.xml" value="0.25" />
+        <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/main_toolbar.xml" value="0.264" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/nav_header.xml" value="0.264" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/layout/nav_header_main.xml" value="0.17980072463768115" />
         <entry key="..\:/Users/Murat/AndroidStudioProjects/StockTracking/app/src/main/res/menu/activity_main_drawer.xml" value="0.25" />

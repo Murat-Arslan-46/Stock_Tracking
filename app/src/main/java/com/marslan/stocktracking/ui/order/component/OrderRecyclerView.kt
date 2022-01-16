@@ -70,7 +70,11 @@ class OrderRecyclerView : RecyclerView {
         override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
             holder.view.binding.apply {
                 model = currentList[position]
-                customers = DataHelper.getCustomers() as java.util.ArrayList<Customer>
+                val array = arrayListOf<Customer>()
+                DataHelper.getCustomers()?.let {
+                    array.addAll(it)
+                }
+                customers = array
                 executePendingBindings()
             }
         }

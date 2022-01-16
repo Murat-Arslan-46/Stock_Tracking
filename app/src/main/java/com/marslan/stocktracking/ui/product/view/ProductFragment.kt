@@ -11,6 +11,7 @@ import com.marslan.stocktracking.core.helper.DataHelper
 import com.marslan.stocktracking.core.helper.DataLiveHelper
 import com.marslan.stocktracking.services.model.Product
 import com.marslan.stocktracking.databinding.FragmentProductBinding
+import com.marslan.stocktracking.services.model.Order
 import com.marslan.stocktracking.ui.product.component.ProductRecyclerView
 import com.marslan.stocktracking.ui.product.viewmodel.ProductViewModel
 import java.util.ArrayList
@@ -42,13 +43,11 @@ class ProductFragment : BaseFragment(), ProductRecyclerView.ItemEventListener {
     }
 
     private fun observer(list: List<Product>){
-        binding.list = list as ArrayList
+        val array = arrayListOf<Product>()
+        array.addAll(list)
+        binding.list = array
         binding.executePendingBindings()
         binding.productRefresh.isRefreshing = false
-    }
-
-    override fun addButton() {
-        requireActivity().addProductScreen { viewModel.post(it) }
     }
 
 

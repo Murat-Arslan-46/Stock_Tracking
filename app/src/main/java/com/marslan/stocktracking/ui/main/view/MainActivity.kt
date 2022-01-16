@@ -1,7 +1,14 @@
 package com.marslan.stocktracking.ui.main.view
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.os.Bundle
+import android.util.Log
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphNavigator
+import androidx.navigation.NavHostController
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.NavHostFragment
 import com.marslan.stocktracking.R
 import com.marslan.stocktracking.base.BaseActivity
 import com.marslan.stocktracking.base.BaseFragment
@@ -17,6 +24,14 @@ class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var mFragment: BaseFragment
+    private val fragments = listOf(
+        HomeFragment.newInstance(),
+        OrderFragment.newInstance(),
+        ProductFragment.newInstance(),
+        CustomerFragment.newInstance()
+    )
+
+    private val stock = arrayListOf<Int>()
 
     @Inject
     lateinit var viewModel: MainViewModel
@@ -27,8 +42,7 @@ class MainActivity : BaseActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        openFragment(getString(R.string.menu_home))
+        openFragment(fragments.first())
         setListeners()
 
         observeData()
@@ -41,48 +55,70 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setListeners() {
-
+        binding.apply {
+            LL0.setOnClickListener { setBottomSelectItem(0) }
+            LL1.setOnClickListener { setBottomSelectItem(1) }
+            LL2.setOnClickListener { setBottomSelectItem(2) }
+            LL3.setOnClickListener { setBottomSelectItem(3) }
+        }
     }
 
-    fun toggleMenu() {
-    }
-
-    private fun openFragment(fragmentTitle: CharSequence) {
-        binding.toolbar.setTitle(
-            if (fragmentTitle == getString(R.string.menu_home))
-                getString(R.string.app_name)
-            else
-                fragmentTitle
-        )
-        val fragment = when (fragmentTitle) {
-            getString(R.string.menu_product) -> {
-                ProductFragment.newInstance()
+    private fun setBottomSelectItem(index : Int){
+        binding.IV0.imageTintList = ColorStateList.valueOf(getColor(R.color.grey_text))
+        binding.TV0.setTextColor(getColor(R.color.grey_text))
+        binding.IV1.imageTintList = ColorStateList.valueOf(getColor(R.color.grey_text))
+        binding.TV1.setTextColor(getColor(R.color.grey_text))
+        binding.IV2.imageTintList = ColorStateList.valueOf(getColor(R.color.grey_text))
+        binding.TV2.setTextColor(getColor(R.color.grey_text))
+        binding.IV3.imageTintList = ColorStateList.valueOf(getColor(R.color.grey_text))
+        binding.TV3.setTextColor(getColor(R.color.grey_text))
+        when(index){
+            0 -> {
+                binding.IV0.imageTintList = ColorStateList.valueOf(getColor(R.color.color_primary))
+                binding.TV0.setTextColor(getColor(R.color.color_primary))
+                openFragment(fragments[0])
             }
-            getString(R.string.menu_home) -> {
-                HomeFragment.newInstance()
+            1 -> {
+                binding.IV1.imageTintList = ColorStateList.valueOf(getColor(R.color.color_primary))
+                binding.TV1.setTextColor(getColor(R.color.color_primary))
+                openFragment(fragments[1])
             }
-            getString(R.string.menu_customer) -> {
-                CustomerFragment.newInstance()
+            2 -> {
+                binding.IV2.imageTintList = ColorStateList.valueOf(getColor(R.color.color_primary))
+                binding.TV2.setTextColor(getColor(R.color.color_primary))
+                openFragment(fragments[2])
             }
-            getString(R.string.menu_invoice) -> {
-                OrderFragment.newInstance()
-            }
-            else -> {
-                HomeFragment.newInstance()
+            3 -> {
+                binding.IV3.imageTintList = ColorStateList.valueOf(getColor(R.color.color_primary))
+                binding.TV3.setTextColor(getColor(R.color.color_primary))
+                openFragment(fragments[3])
             }
         }
+    }
+
+    private fun openFragment(fragment: BaseFragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, fragment)
             .commit()
+        val index = fragments.indexOf(fragment)
+        stock.removeIf { it == index }
+        stock.add(fragments.indexOf(fragment))
+        Log.d("last index", "openFragment: ${stock.last()}")
         mFragment = fragment
-        binding.toolbar.addListener(mFragment)
     }
 
     override fun onBackPressed() {
-        if (mFragment.javaClass.simpleName == HomeFragment::class.simpleName)
-            finish()
-        else {
-            openFragment(getString(R.string.menu_home))
+        if (stock.size > 1){
+            stock.removeAt(stock.lastIndex)
+            setBottomSelectItem(stock.last())
+        }
+        else{
+            if (mFragment.javaClass.simpleName == HomeFragment::class.java.simpleName)
+                finish()
+            else {
+                stock.removeAt(stock.lastIndex)
+                setBottomSelectItem(0)
+            }
         }
     }
 }

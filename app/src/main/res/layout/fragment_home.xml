@@ -1,6 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_primary">
+
+        <ImageView
+            android:id="@+id/appHeader"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="h, 16:9"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/app_header_background"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@id/appHeader"
+            app:layout_constraintStart_toStartOf="@id/appHeader"
+            app:layout_constraintEnd_toEndOf="@id/appHeader"
+            app:layout_constraintBottom_toBottomOf="@id/appHeader"
+            android:paddingTop="@dimen/total_tool_bar_height"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="24sp"/>
+
+        <View
+            android:id="@+id/homeToolbarBack"
+            android:alpha="0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/color_primary"
+            app:layout_constraintTop_toTopOf="@id/appHeader"
+            app:layout_constraintEnd_toEndOf="@id/appHeader"
+            app:layout_constraintStart_toStartOf="@id/appHeader"
+            app:layout_constraintBottom_toBottomOf="@id/appHeader"/>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/total_tool_bar_height">
+
+            <LinearLayout
+                android:id="@+id/homeBottomSheet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/grey_light"
+                android:orientation="vertical"
+                app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+                android:layout_alignParentBottom="true">
+
+            </LinearLayout>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <ImageView
+            android:id="@+id/homeProfileIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/status_bar_height"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_avatar"
+            app:tint="@color/white"
+            app:layout_constraintTop_toTopOf="@id/appHeader"
+            app:layout_constraintStart_toStartOf="@id/appHeader"/>
+
+        <ImageView
+            android:id="@+id/homeNotificationIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/status_bar_height"
+            android:layout_marginEnd="10dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_bell"
+            app:tint="@color/white"
+            app:layout_constraintTop_toTopOf="@id/appHeader"
+            app:layout_constraintEnd_toEndOf="@id/appHeader"/>
+
+        <TextView
+            android:id="@+id/homeTitle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0"
+            app:layout_constraintTop_toTopOf="@id/homeProfileIcon"
+            app:layout_constraintStart_toStartOf="@id/appHeader"
+            app:layout_constraintEnd_toEndOf="@id/appHeader"
+            app:layout_constraintBottom_toBottomOf="@id/homeProfileIcon"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="17sp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

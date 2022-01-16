@@ -22,7 +22,7 @@ class MainViewModel @Inject constructor() : BaseViewModel() {
     private val productListener = object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
             val list = arrayListOf<Product>()
-            for(child in snapshot.children) {
+            for (child in snapshot.children) {
                 child.getValue(Product::class.java)?.let {
                     list.add(it)
                 }
@@ -38,7 +38,7 @@ class MainViewModel @Inject constructor() : BaseViewModel() {
     private val customerListener = object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
             val list = arrayListOf<Customer>()
-            for(child in snapshot.children) {
+            for (child in snapshot.children) {
                 child.getValue(Customer::class.java)?.let {
                     list.add(it)
                 }
@@ -54,7 +54,7 @@ class MainViewModel @Inject constructor() : BaseViewModel() {
     private val invoiceListener = object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
             val list = arrayListOf<Invoice>()
-            for(child in snapshot.children) {
+            for (child in snapshot.children) {
                 child.getValue(Invoice::class.java)?.let {
                     list.add(it)
                 }
@@ -70,7 +70,7 @@ class MainViewModel @Inject constructor() : BaseViewModel() {
     private val orderListener = object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
             val list = arrayListOf<Order>()
-            for(child in snapshot.children) {
+            for (child in snapshot.children) {
                 child.getValue(Order::class.java)?.let {
                     list.add(it)
                 }
