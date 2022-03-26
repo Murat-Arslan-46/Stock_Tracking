@@ -47,9 +47,12 @@ class HomeFragment : BaseFragment() {
             }
 
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                hideKeyboard(binding.homeSearch)
+                binding.homeSearch.clearFocus()
+                binding.homeSearch.text = null
                 binding.homeToolbarBack.alpha = slideOffset
-                if (slideOffset > 0.5f)
-                    binding.homeTitle.alpha = (slideOffset - 0.5f) * 2
+                if (slideOffset > 0.8f)
+                    binding.homeTitle.alpha = (slideOffset - 0.8f) * 5
                 else
                     binding.homeTitle.alpha = 0f
             }

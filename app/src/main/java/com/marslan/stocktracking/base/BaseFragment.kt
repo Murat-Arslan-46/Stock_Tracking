@@ -3,6 +3,7 @@ package com.marslan.stocktracking.base
 import android.os.Bundle
 import android.text.Editable
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import com.marslan.stocktracking.core.extension.toast
 import com.marslan.stocktracking.core.helper.DataHelper
 import com.marslan.stocktracking.core.helper.DataLiveHelper
@@ -16,7 +17,9 @@ open class BaseFragment : DaggerFragment(), DataLiveHelper {
         DataHelper.onChangeListener = this
     }
 
-    override fun onChangeCustomer() {}
+    fun hideKeyboard(v: View){
+        val manager = requireActivity().getSystemService(InputMethodManager::class.java) as InputMethodManager
+        manager.hideSoftInputFromWindow(v.windowToken,0)
+    }
 
-    override fun onChangeProduct() {}
 }

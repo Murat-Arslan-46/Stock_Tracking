@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
 
     </data>
@@ -9,7 +10,7 @@
         android:layout_height="match_parent"
         android:background="@color/color_primary">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/appHeader"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -19,39 +20,60 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="@id/appHeader"
-            app:layout_constraintStart_toStartOf="@id/appHeader"
-            app:layout_constraintEnd_toEndOf="@id/appHeader"
-            app:layout_constraintBottom_toBottomOf="@id/appHeader"
-            android:paddingTop="@dimen/total_tool_bar_height"
+            android:layout_height="wrap_content"
+            android:paddingVertical="5dp"
+            app:layout_constraintBottom_toTopOf="@id/homeSearch"
+            app:layout_constraintStart_toStartOf="@id/homeSearch"
+            app:layout_constraintEnd_toEndOf="@id/homeSearch"
             android:text="@string/app_name"
             android:textColor="@color/white"
             android:gravity="center"
             android:textSize="24sp"/>
 
+        <EditText
+            android:id="@+id/homeSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/background_radius_10dp"
+            android:drawableEnd="@drawable/ic_search"
+            android:drawableTint="@color/color_primary"
+            android:hint="@string/search"
+            android:inputType="text"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="5dp"
+            android:singleLine="true"
+            android:textColor="@color/color_primary"
+            android:textColorHint="@color/color_primary_transparent"
+            app:layout_constraintBottom_toBottomOf="@id/appHeader"
+            app:layout_constraintEnd_toEndOf="@id/appHeader"
+            app:layout_constraintStart_toStartOf="@id/appHeader" />
+
         <View
             android:id="@+id/homeToolbarBack"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            tools:visibility="gone"
             android:background="@color/color_primary"
             app:layout_constraintTop_toTopOf="@id/appHeader"
             app:layout_constraintEnd_toEndOf="@id/appHeader"
             app:layout_constraintStart_toStartOf="@id/appHeader"
             app:layout_constraintBottom_toBottomOf="@id/appHeader"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/homeLanguageIcon"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/homeSettingIcon"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="@dimen/status_bar_height"
             android:layout_marginStart="10dp"
             android:padding="10dp"
-            android:src="@drawable/ic_tr"
+            android:src="@drawable/ic_setting"
+            app:tint="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/appHeader"
             app:layout_constraintStart_toStartOf="@id/appHeader"/>
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/homeMessageIcon"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -66,6 +88,7 @@
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            tools:visibility="gone"
             android:layout_marginTop="@dimen/total_tool_bar_height">
 
             <LinearLayout
@@ -81,7 +104,7 @@
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/homeProfileIcon"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -93,7 +116,7 @@
             app:layout_constraintTop_toTopOf="@id/appHeader"
             app:layout_constraintStart_toStartOf="@id/appHeader"/>
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/homeNotificationIcon"
             android:layout_width="50dp"
             android:layout_height="50dp"
