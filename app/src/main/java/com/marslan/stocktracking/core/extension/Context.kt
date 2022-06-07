@@ -10,7 +10,6 @@ import androidx.core.widget.addTextChangedListener
 import com.marslan.stocktracking.R
 import com.marslan.stocktracking.core.component.CustomerSpinnerAdapter
 import com.marslan.stocktracking.core.component.ProductSpinnerAdapter
-import com.marslan.stocktracking.core.helper.DataHelper
 import com.marslan.stocktracking.databinding.DialogAddCustomerBinding
 import com.marslan.stocktracking.databinding.DialogAddOrderBinding
 import com.marslan.stocktracking.databinding.DialogAddProductBinding
@@ -178,52 +177,6 @@ fun Context.addCustomerScreen(listener: (Customer) -> Unit) {
             view.addCustomerPhone.setSelection(result.length)
         }
     }
-    dialog.window?.setBackgroundDrawableResource(R.drawable.background_radius_10dp_transparent)
-    dialog.window?.attributes?.gravity = Gravity.TOP
-    dialog.show()
-
-}
-
-
-fun Context.addOrderScreen(listener: (Order) -> Unit) {
-    val view = DialogAddOrderBinding.inflate(LayoutInflater.from(this), null, false)
-    var customer: Customer? = null
-    var product: Product? = null
-    val dialog = AlertDialog.Builder(this)
-        .setView(view.root)
-        .setCancelable(false)
-        .create()
-    view.customerSpinner.adapter =
-        CustomerSpinnerAdapter(
-            this,
-            android.R.layout.simple_spinner_item,
-            DataHelper.getCustomers()?.toTypedArray() ?: arrayOf()
-        )
-    view.customerSpinner.setOnItemClickListener { _, _, position, _ ->
-        customer = DataHelper.getCustomers()?.get(position)
-    }
-    view.productSpinner.adapter =
-        ProductSpinnerAdapter(
-            this,
-            android.R.layout.simple_spinner_item,
-            DataHelper.getProducts()?.toTypedArray() ?: arrayOf()
-        )
-    view.customerSpinner.setOnItemClickListener { _, _, position, _ ->
-        product = DataHelper.getProducts()?.get(position)
-    }
-    view.addOrderSuccess.setOnClickListener {
-        listener(
-            Order(
-                (0..999999999).random(),
-                customer?.id ?: 1,
-                "me",
-                listOf(product ?: Product(1, "w", 2.0, 10)),
-                Date().time
-            )
-        )
-        dialog.dismiss()
-    }
-    view.addOrderCancel.setOnClickListener { dialog.dismiss() }
     dialog.window?.setBackgroundDrawableResource(R.drawable.background_radius_10dp_transparent)
     dialog.window?.attributes?.gravity = Gravity.TOP
     dialog.show()

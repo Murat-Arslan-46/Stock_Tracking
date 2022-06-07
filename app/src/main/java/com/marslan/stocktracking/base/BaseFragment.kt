@@ -1,21 +1,29 @@
 package com.marslan.stocktracking.base
 
 import android.os.Bundle
-import android.text.Editable
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import com.marslan.stocktracking.core.extension.toast
-import com.marslan.stocktracking.core.helper.DataHelper
-import com.marslan.stocktracking.core.helper.DataLiveHelper
-import com.marslan.stocktracking.ui.main.view.MainActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import dagger.android.support.DaggerFragment
 
-open class BaseFragment : DaggerFragment(), DataLiveHelper {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        DataHelper.onChangeListener = this
+abstract class BaseFragment<BN : ViewDataBinding> : DaggerFragment() {
+
+    protected lateinit var binding: BN
+    var shouldShowBottomBarView: Boolean = true
+    abstract val layoutId: Int
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        if (this::binding.isInitialized)
+            return binding.root
+        else
+            binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
+        return binding.root
     }
+
 
     fun hideKeyboard(v: View){
         val manager = requireActivity().getSystemService(InputMethodManager::class.java) as InputMethodManager

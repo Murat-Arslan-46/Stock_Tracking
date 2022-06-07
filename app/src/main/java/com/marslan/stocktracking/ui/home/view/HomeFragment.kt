@@ -1,19 +1,17 @@
 package com.marslan.stocktracking.ui.home.view
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.marslan.stocktracking.R
 import com.marslan.stocktracking.base.BaseFragment
 import com.marslan.stocktracking.databinding.FragmentHomeBinding
-import kotlinx.coroutines.delay
 
-class HomeFragment : BaseFragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
-    private lateinit var binding: FragmentHomeBinding
+    override val layoutId = R.layout.fragment_home
+
     private lateinit var bottomSheet: BottomSheetBehavior<LinearLayout>
 
     companion object {
@@ -22,12 +20,8 @@ class HomeFragment : BaseFragment() {
         fun newInstance() = HomeFragment()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentHomeBinding.inflate(layoutInflater)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         bottomSheet = BottomSheetBehavior.from(binding.homeBottomSheet)
         bottomSheet.state = BottomSheetBehavior.STATE_EXPANDED
         binding.appHeader.postDelayed({
@@ -57,6 +51,5 @@ class HomeFragment : BaseFragment() {
                     binding.homeTitle.alpha = 0f
             }
         })
-        return binding.root
     }
 }

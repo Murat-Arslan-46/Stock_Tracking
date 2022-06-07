@@ -1,19 +1,18 @@
 package com.marslan.stocktracking.ui.main.data
 
-import com.google.firebase.database.ValueEventListener
-import com.marslan.stocktracking.services.Request
+import com.marslan.stocktracking.ui.main.data.remote.MainApi
 import javax.inject.Inject
 
 class MainRepository @Inject constructor() {
 
     @Inject
-    lateinit var request: Request
+    lateinit var mainApi: MainApi
 
-    fun observeProducts(listener: ValueEventListener) = request.observeProductsMap(listener)
+    fun observeProducts() = mainApi.observeProducts()
 
-    fun observeCustomers(listener: ValueEventListener) = request.observeCustomersMap(listener)
+    fun observeCustomers() = mainApi.observeCustomers()
 
-    fun observeInvoices(listener: ValueEventListener) = request.observeInvoicesMap(listener)
+    fun observeInvoices() = mainApi.observeInvoices()
 
-    fun observeOrders(listener: ValueEventListener) = request.observeOrderMap(listener)
+    fun observeOrders() = mainApi.observeOrders()
 }

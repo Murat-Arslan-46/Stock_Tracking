@@ -1,19 +1,17 @@
 package com.marslan.stocktracking.ui.order.data
 
-import com.marslan.stocktracking.core.helper.DataHelper
-import com.marslan.stocktracking.services.Request
-import com.marslan.stocktracking.services.model.Customer
 import com.marslan.stocktracking.services.model.Order
+import com.marslan.stocktracking.ui.order.data.remote.OrderApi
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class OrderRepository @Inject constructor() {
 
     @Inject
-    lateinit var request: Request
+    lateinit var service: OrderApi
 
-    fun getOrders() = DataHelper.getOrders()
+    fun observe() = service.observe()
 
-    fun setOrder(id: String, value: Order) = request.addOrder(id, value)
-
-    fun addOrder(id: String, value: Order) = request.addOrder(id, value)
+    fun setValue(id: String, value: Order) = service.setValue(id, value)
 }

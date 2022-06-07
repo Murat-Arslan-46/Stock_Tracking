@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.marslan.stocktracking.core.helper.DataHelper
 import com.marslan.stocktracking.services.model.Customer
 import com.marslan.stocktracking.services.model.Order
 
@@ -71,9 +70,6 @@ class OrderRecyclerView : RecyclerView {
             holder.view.binding.apply {
                 model = currentList[position]
                 val array = arrayListOf<Customer>()
-                DataHelper.getCustomers()?.let {
-                    array.addAll(it)
-                }
                 customers = array
                 executePendingBindings()
             }

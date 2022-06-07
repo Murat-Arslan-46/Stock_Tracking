@@ -1,47 +1,51 @@
 package com.marslan.stocktracking.ui.product.view
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.marslan.stocktracking.R
 import com.marslan.stocktracking.base.BaseFragment
-import com.marslan.stocktracking.core.extension.addProductScreen
 import com.marslan.stocktracking.core.extension.editProductScreen
-import com.marslan.stocktracking.core.helper.DataHelper
-import com.marslan.stocktracking.core.helper.DataLiveHelper
-import com.marslan.stocktracking.services.model.Product
+import com.marslan.stocktracking.core.model.Resource
 import com.marslan.stocktracking.databinding.FragmentProductBinding
-import com.marslan.stocktracking.services.model.Order
+import com.marslan.stocktracking.services.model.Product
+import com.marslan.stocktracking.ui.main.viewmodel.MainViewModel
 import com.marslan.stocktracking.ui.product.component.ProductRecyclerView
 import com.marslan.stocktracking.ui.product.viewmodel.ProductViewModel
-import java.util.ArrayList
 import javax.inject.Inject
 
-class ProductFragment : BaseFragment(), ProductRecyclerView.ItemEventListener {
+class ProductFragment : BaseFragment<FragmentProductBinding>(), ProductRecyclerView.ItemEventListener {
 
-    private lateinit var binding: FragmentProductBinding
+    override val layoutId = R.layout.fragment_product
 
     @Inject
     lateinit var viewModel: ProductViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentProductBinding.inflate(layoutInflater)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.productRV.listener = this
         binding.toolbar.toolbarTitle.text = getString(R.string.menu_product)
         binding.productRefresh.isRefreshing = true
-        viewModel.getProducts()?.let { observer(it) }
         binding.productRefresh.setOnRefreshListener {
-            viewModel.getProducts()?.let { observer(it) }
+            binding.productRefresh.isRefreshing = false
         }
-        return binding.root
+        observeData()
+        getData()
     }
 
-    override fun onChangeProduct() {
-        viewModel.getProducts()?.let { observer(it) }
+    private fun getData(){
+        viewModel.observeProduct()
+    }
+
+    private fun observeData() {
+        viewModel.productList.observe(viewLifecycleOwner){
+            when (it){
+                is Resource.loading -> {}
+                is Resource.error -> {}
+                is Resource.success -> {
+                    observer(it.result)
+                }
+            }
+        }
     }
 
     private fun observer(list: List<Product>){
@@ -60,8 +64,6 @@ class ProductFragment : BaseFragment(), ProductRecyclerView.ItemEventListener {
     }
 
     override fun clickConf(product: Product) {
-        requireActivity().editProductScreen(product) {
-            viewModel.setProduct(it.id.toString(),it)
-        }
+        requireActivity().editProductScreen(product) {}
     }
 }

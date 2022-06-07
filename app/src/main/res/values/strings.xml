@@ -16,4 +16,5 @@
     <string name="total">Toplam</string>
     <string name="select_product">Ürün Seçin</string>
     <string name="select_customer">Müşteri Seçin</string>
+    <string name="setting">Ayarlar</string>
 </resources>
