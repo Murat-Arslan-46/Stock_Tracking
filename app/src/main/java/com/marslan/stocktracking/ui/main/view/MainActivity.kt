@@ -2,6 +2,7 @@ package com.marslan.stocktracking.ui.main.view
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import com.marslan.contract_acceptor.ContractAcceptor
 import com.marslan.stocktracking.R
 import com.marslan.stocktracking.base.BaseActivity
 import com.marslan.stocktracking.databinding.ActivityMainBinding

@@ -47,20 +47,21 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
     implementation 'com.google.firebase:firebase-database-ktx:20.0.5'
+    implementation project(path: ':contract_acceptor')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     // dagger
-    implementation 'com.google.dagger:dagger:2.40.5'
-    implementation 'com.google.dagger:dagger-android:2.40.5'
-    implementation 'com.google.dagger:dagger-android-support:2.40.5'
+    implementation 'com.google.dagger:dagger:2.42'
+    implementation 'com.google.dagger:dagger-android:2.42'
+    implementation 'com.google.dagger:dagger-android-support:2.42'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    kapt 'com.google.dagger:dagger-android-processor:2.40.5'
-    kapt 'com.google.dagger:dagger-compiler:2.40.5'
+    kapt 'com.google.dagger:dagger-android-processor:2.42'
+    kapt 'com.google.dagger:dagger-compiler:2.42'
 
     //Network
-    implementation "com.google.code.gson:gson:2.8.7"
+    implementation 'com.google.code.gson:gson:2.9.0'
 
     // firebase database
     implementation platform('com.google.firebase:firebase-bom:29.0.3')
